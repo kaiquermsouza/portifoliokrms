@@ -1,4 +1,5 @@
 import streamlit as st
+from pathlib import Path
 
 # ===== CONFIG =====
 st.set_page_config(
@@ -7,10 +8,15 @@ st.set_page_config(
     layout="wide"
 )
 
-# ===== CSS =====
+# ===== CSS (ROBUSTO PRA DEPLOY) =====
 def load_css():
-    with open("assets/style.css") as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    css_path = Path(__file__).parent / "assets" / "style.css"
+    
+    if css_path.exists():
+        with open(css_path) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    else:
+        st.warning("CSS não encontrado.")
 
 load_css()
 
@@ -44,7 +50,7 @@ with col1:
     st.write("DRE + Simulação de fluxo de caixa")
 
     if st.button("Ver Projeto", key="fin"):
-        st.switch_page("pages/1_Análise_DRE_Ambev.py")
+        st.switch_page("pages/1_financeiroDRE.py")
 
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -56,7 +62,7 @@ with col2:
     st.write("Operação, entregas e devoluções")
 
     if st.button("Ver Projeto", key="log"):
-        st.switch_page("pages/2_Logística.py")
+        st.switch_page("pages/2_logistica.py")
 
     st.markdown('</div>', unsafe_allow_html=True)
 
