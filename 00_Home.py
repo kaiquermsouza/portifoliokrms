@@ -22,8 +22,8 @@ load_css()
 
 # ===== HEADER =====
 st.title("📊 Portfólio de Dados")
-st.subheader("Kaique Roberto")
-st.write("Analista de Dados | Power BI | Python | VBA")
+st.subheader("Kaique Roberto Machado Souza")
+st.write("Analista de Dados | Power BI | Python | SQL | VBA")
 
 st.divider()
 
