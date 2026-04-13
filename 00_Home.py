@@ -1,52 +1,79 @@
 import streamlit as st
+from pathlib import Path
 
-st.title("📊 Projeto: DRE AMBEV + Simulador Financeiro")
+# ===== CONFIG =====
+st.set_page_config(
+    page_title="Portfólio | Kaique",
+    page_icon="📊",
+    layout="wide"
+)
 
-st.subheader("🎯 Objetivo")
-st.write("""
-Desenvolver um dashboard gerencial baseado na DRE da AMBEV, permitindo análise de desempenho financeiro
-e simulação de cenários através de um fluxo de caixa projetado.
-""")
+# ===== CSS =====
+def load_css():
+    css_path = Path(__file__).resolve().parent / "assets" / "style.css"
 
-st.subheader("📊 Sobre o Dashboard")
-st.write("""
-O projeto foi desenvolvido no Power BI com dois principais focos:
+    if css_path.exists():
+        with open(css_path) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    else:
+        st.warning("CSS não encontrado.")
 
-🔹 Análise da DRE:
-- Receita, custos e despesas
-- Margens e indicadores financeiros
-- Evolução temporal dos resultados
+load_css()
 
-🔹 Simulador Financeiro:
-- Projeção de fluxo de caixa
-- Simulação de cenários futuros
-- Apoio à tomada de decisão estratégica
-""")
+# ===== HEADER =====
+st.title("📊 Portfólio de Dados")
+st.subheader("Kaique Roberto")
+st.write("Analista de Dados | Power BI | Python | VBA")
 
-st.subheader("💡 Principais Insights")
-st.write("""
-- Identificação dos principais drivers de resultado (receita vs custos)
-- Impacto de variações financeiras no resultado final
-- Capacidade de simular decisões antes de aplicá-las na prática
-""")
+st.divider()
 
-st.subheader("⚙️ Diferencial do Projeto")
-st.write("""
-Este projeto vai além de um dashboard tradicional, incorporando um simulador financeiro
-que permite testar cenários e prever impactos no fluxo de caixa, aproximando a análise
-de dados da tomada de decisão real.
+# ===== SOBRE =====
+st.markdown("""
+### 👋 Sobre mim
+
+Analista de dados com foco em transformar dados em decisões estratégicas.  
+Experiência com Power BI no dia a dia e evolução contínua em Python e automações.
 """)
 
 st.divider()
 
-# 🔗 LINK DO POWER BI
-url = "https://app.fabric.microsoft.com/view?r=eyJrIjoiMjk4MTI0ZGYtYzAyYy00YTQ1LWE4YTItMjY2ZTZmNGFkZmI1IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9"
+# ===== PROJETOS =====
+st.markdown("## 🚀 Projetos")
 
-st.link_button("🔗 Abrir Dashboard no Power BI", url)
+col1, col2, col3 = st.columns(3)
 
-st.divider()
+# ===== FINANCEIRO =====
+with col1:
+    st.markdown('<div class="card">', unsafe_allow_html=True)
 
-# 📺 EMBED
-st.subheader("📺 Visualização do Dashboard")
+    st.markdown("### 📊 Financeiro")
+    st.write("DRE + Simulação de fluxo de caixa")
 
-st.components.v1.iframe(url, height=700, scrolling=True)
+    if st.button("Ver Projeto", key="fin"):
+        st.switch_page("pages/1_financeiroDRE.py")
+
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# ===== LOGÍSTICA =====
+with col2:
+    st.markdown('<div class="card">', unsafe_allow_html=True)
+
+    st.markdown("### 📦 Logística")
+    st.write("Operação, entregas e devoluções")
+
+    if st.button("Ver Projeto", key="log"):
+        st.switch_page("pages/2_logistica.py")
+
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# ===== VENDAS =====
+with col3:
+    st.markdown('<div class="card">', unsafe_allow_html=True)
+
+    st.markdown("### 📈 Vendas")
+    st.write("Faturamento vs Meta e performance")
+
+    if st.button("Ver Projeto", key="ven"):
+        st.switch_page("pages/3_vendas.py")
+
+    st.markdown('</div>', unsafe_allow_html=True)
