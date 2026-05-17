@@ -1,0 +1,48 @@
+/* Fundo geral */
+body {
+    background-color: #0e1117;
+}
+
+/* Container principal */
+.main {
+    background-color: #0e1117;
+}
+
+/* Cards */
+.card {
+    background-color: #1c1f26;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #2a2f3a;
+    transition: all 0.3s ease;
+}
+
+/* Hover (efeito ao passar o mouse) */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.4);
+    border: 1px solid #4f8cff;
+}
+
+/* Títulos */
+.card h3 {
+    color: #ffffff;
+}
+
+/* Texto */
+.card p {
+    color: #aab1c3;
+}
+
+/* Botão */
+.stButton button {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #4f8cff;
+    color: white;
+    font-weight: bold;
+}
+
+.stButton button:hover {
+    background-color: #3a6fd8;
+}
