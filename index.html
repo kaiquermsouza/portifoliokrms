@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaique Souza | Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --bg3: #1a1a24;
+    --accent: #6c63ff;
+    --accent2: #00d9c0;
+    --accent3: #ff6b6b;
+    --text: #f0eff8;
+    --text2: #9997b8;
+    --text3: #5c5a7a;
+    --border: rgba(108,99,255,0.18);
+    --border2: rgba(255,255,255,0.06);
+    --card: #13131e;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.1rem 4rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border2);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  nav ul a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 500 !important;
+    transition: opacity 0.2s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.88; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%);
+    top: -200px; right: -200px;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,217,192,0.07) 0%, transparent 70%);
+    bottom: -100px; left: 100px;
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(108,99,255,0.12);
+    border: 1px solid rgba(108,99,255,0.25);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 .line2 { color: var(--accent); }
+
+  .hero-desc {
+    color: var(--text2);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.85rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    padding: 0.85rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.95rem;
+    border: 1px solid var(--border2);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    background: rgba(108,99,255,0.06);
+  }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .hero-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .hero-card-name { font-family: var(--font-display); font-weight: 700; font-size: 1rem; }
+  .hero-card-role { color: var(--text2); font-size: 0.8rem; }
+
+  .stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stack-tag {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    color: var(--text2);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    font-weight: 400;
+  }
+
+  .stack-tag.highlight {
+    background: rgba(108,99,255,0.12);
+    border-color: rgba(108,99,255,0.3);
+    color: #a09bff;
+  }
+
+  .mini-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+    border-top: 1px solid var(--border2);
+    padding-top: 1.2rem;
+  }
+
+  .mini-stat { text-align: center; }
+  .mini-stat-num {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text);
+    display: block;
+  }
+  .mini-stat-label { color: var(--text3); font-size: 0.72rem; }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+  section:nth-child(even) { background: var(--bg2); }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 3.5rem;
+    line-height: 1.1;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--border);
+    transform: translateY(-3px);
+  }
+
+  .skill-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-icon.purple { background: rgba(108,99,255,0.12); }
+  .skill-icon.teal { background: rgba(0,217,192,0.1); }
+  .skill-icon.coral { background: rgba(255,107,107,0.1); }
+  .skill-icon.amber { background: rgba(255,190,76,0.1); }
+
+  .skill-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-card p {
+    color: var(--text2);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-tags span {
+    background: var(--bg3);
+    color: var(--text3);
+    font-size: 0.72rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover {
+    border-color: var(--border);
+    transform: translateY(-4px);
+  }
+
+  .project-thumb {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-thumb.purple { background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(108,99,255,0.05)); }
+  .project-thumb.teal { background: linear-gradient(135deg, rgba(0,217,192,0.12), rgba(0,217,192,0.03)); }
+  .project-thumb.coral { background: linear-gradient(135deg, rgba(255,107,107,0.12), rgba(255,107,107,0.03)); }
+  .project-thumb.amber { background: linear-gradient(135deg, rgba(255,190,76,0.12), rgba(255,190,76,0.03)); }
+  .project-thumb.blue { background: linear-gradient(135deg, rgba(56,163,255,0.12), rgba(56,163,255,0.03)); }
+
+  .project-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+
+  .project-type {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.6rem;
+  }
+
+  .project-body h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .project-body p {
+    color: var(--text2);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .project-langs {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .lang-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    border: 1px solid var(--border2);
+    color: var(--text3);
+  }
+
+  .project-link {
+    color: var(--accent);
+    font-size: 0.82rem;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: gap 0.2s;
+  }
+
+  .project-link:hover { gap: 0.6rem; }
+
+  /* POWERBI SECTION */
+  .powerbi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .powerbi-card {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: border-color 0.25s;
+  }
+
+  .powerbi-card:hover { border-color: rgba(255,190,76,0.3); }
+
+  .pbi-icon {
+    width: 42px; height: 42px;
+    background: rgba(255,190,76,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .pbi-info h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .pbi-info p { color: var(--text2); font-size: 0.82rem; line-height: 1.55; }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text2);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-highlights { display: flex; flex-direction: column; gap: 1rem; }
+
+  .highlight-item {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 1rem 1.2rem;
+  }
+
+  .highlight-item h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .highlight-item p { color: var(--text2); font-size: 0.82rem; }
+
+  /* CONTACT */
+  .contact-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-wrapper .section-title { margin-bottom: 1rem; }
+
+  .contact-desc {
+    color: var(--text2);
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 0.9rem 1.5rem;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border2);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p { color: var(--text3); font-size: 0.82rem; }
+  footer a { color: var(--text3); text-decoration: none; }
+  footer a:hover { color: var(--text2); }
+
+  /* FADE-IN */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+    .hero-visual { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">KS<span>.</span></div>
+  <ul>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#powerbi">Power BI</a></li>
+    <li><a href="#contato" class="nav-cta">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Disponível para novas oportunidades</div>
+    <h1>
+      Kaique<br>
+      <span class="line2">Souza</span>
+    </h1>
+    <p class="hero-desc">
+      Analista de Dados especialista em Power BI, Python e SQL — transformando dados financeiros e operacionais em insights que geram decisão.
+    </p>
+    <div class="hero-btns">
+      <a href="#projetos" class="btn-primary">Ver projetos →</a>
+      <a href="#contato" class="btn-secondary">Entre em contato</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <div class="avatar">KS</div>
+        <div>
+          <div class="hero-card-name">Kaique Souza</div>
+          <div class="hero-card-role">Data Analyst · FP&amp;A · BI</div>
+        </div>
+      </div>
+      <div class="stack-list">
+        <span class="stack-tag highlight">Power BI</span>
+        <span class="stack-tag highlight">Python</span>
+        <span class="stack-tag highlight">SQL</span>
+        <span class="stack-tag">DAX</span>
+        <span class="stack-tag">Pandas</span>
+        <span class="stack-tag">Fabric</span>
+        <span class="stack-tag">FP&amp;A</span>
+        <span class="stack-tag">ETL</span>
+        <span class="stack-tag">FIFO/Aging</span>
+      </div>
+      <div class="mini-stats">
+        <div class="mini-stat">
+          <span class="mini-stat-num">9+</span>
+          <span class="mini-stat-label">Repositórios</span>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-num">3+</span>
+          <span class="mini-stat-label">Anos exp.</span>
+        </div>
+        <div class="mini-stat">
+          <span class="mini-stat-num">∞</span>
+          <span class="mini-stat-label">Café ☕</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <div class="section-label">Sobre mim</div>
+      <div class="section-title" style="margin-bottom: 1.5rem;">Dados que<br>contam histórias</div>
+      <p>
+        Sou Analista de Dados com foco em FP&A, Business Intelligence e automação de processos. Meu trabalho une análise financeira com engenharia de dados — transformando planilhas caóticas em dashboards que realmente ajudam gestores a decidir.
+      </p>
+      <p>
+        Trabalho com Python para automações e análises exploratórias, SQL para modelagem e extração de dados, e Power BI para storytelling visual. Também tenho experiência com controles financeiros como FIFO, Aging e projeções de fluxo de caixa.
+      </p>
+      <p>
+        Sempre em busca de aprender — atualmente explorando Microsoft Fabric e técnicas avançadas de modelagem de dados.
+      </p>
+    </div>
+
+    <div class="about-highlights fade-in">
+      <div class="highlight-item">
+        <h4>📊 FP&amp;A & Controles Financeiros</h4>
+        <p>Modelagem de projeções, FIFO, Aging, fluxo de caixa e dashboards para tomada de decisão executiva.</p>
+      </div>
+      <div class="highlight-item">
+        <h4>🤖 Automação com Python</h4>
+        <p>Scripts para extração, transformação e carga de dados, reduzindo trabalho manual e eliminando erros.</p>
+      </div>
+      <div class="highlight-item">
+        <h4>📈 Business Intelligence</h4>
+        <p>Dashboards interativos no Power BI com DAX avançado, modelagem dimensional e relatórios executivos.</p>
+      </div>
+      <div class="highlight-item">
+        <h4>🗄️ Engenharia de Dados</h4>
+        <p>Modelagem em SQL Server, pipelines de dados e integração com Microsoft Fabric para analytics em escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Competências</div>
+  <div class="section-title">Stack técnico</div>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-icon purple">📊</div>
+      <h3>Power BI & DAX</h3>
+      <p>Dashboards completos com modelagem dimensional, medidas DAX avançadas, RLS, e publicação no Power BI Service.</p>
+      <div class="skill-tags">
+        <span>DAX</span><span>Power Query</span><span>M Language</span><span>RLS</span><span>Dataflows</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon teal">🐍</div>
+      <h3>Python</h3>
+      <p>Análise de dados, automações, web scraping, processamento de arquivos e visualizações com bibliotecas modernas.</p>
+      <div class="skill-tags">
+        <span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Seaborn</span><span>Jupyter</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon coral">🗄️</div>
+      <h3>SQL</h3>
+      <p>Queries complexas, stored procedures, modelagem relacional, ETL e integração com diversas fontes de dados.</p>
+      <div class="skill-tags">
+        <span>SQL Server</span><span>MySQL</span><span>CTEs</span><span>Window Functions</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon amber">💰</div>
+      <h3>FP&amp;A</h3>
+      <p>Planejamento financeiro, análise de variâncias, orçamento, projeções e modelos de controle como FIFO e Aging.</p>
+      <div class="skill-tags">
+        <span>FIFO</span><span>Aging</span><span>Budget</span><span>Forecast</span><span>Fluxo de Caixa</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS -->
+<section id="projetos" style="background: var(--bg2);">
+  <div class="section-label">GitHub</div>
+  <div class="section-title">Projetos em destaque</div>
+  <div class="projects-grid">
+
+    <div class="project-card fade-in">
+      <div class="project-thumb purple">🐍</div>
+      <div class="project-body">
+        <div class="project-type">Python · Análise de Dados</div>
+        <h3>Repositório Python</h3>
+        <p>Coleção de notebooks e scripts Python cobrindo análise exploratória, visualizações e automações de dados com Pandas e bibliotecas de visualização.</p>
+        <div class="project-footer">
+          <div class="project-langs">
+            <span class="lang-tag">Jupyter</span>
+            <span class="lang-tag">Pandas</span>
+          </div>
+          <a href="https://github.com/kaiquermsouza/Python" target="_blank" class="project-link">Ver →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-thumb amber">📊</div>
+      <div class="project-body">
+        <div class="project-type">Power BI · Dashboard</div>
+        <h3>Projetos Power BI</h3>
+        <p>Dashboards completos desenvolvidos em Power BI, com foco em análises financeiras, operacionais e de performance para suporte à decisão executiva.</p>
+        <div class="project-footer">
+          <div class="project-langs">
+            <span class="lang-tag">DAX</span>
+            <span class="lang-tag">Power Query</span>
+          </div>
+          <a href="https://github.com/kaiquermsouza/Projetos-Power-BI" target="_blank" class="project-link">Ver →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-thumb teal">🏥</div>
+      <div class="project-body">
+        <div class="project-type">Python · Dashboard</div>
+        <h3>Dashboard de Atendimentos</h3>
+        <p>Painel analítico para monitoramento de atendimentos com métricas de volume, tempo de resposta e indicadores de qualidade de serviço.</p>
+        <div class="project-footer">
+          <div class="project-langs">
+            <span class="lang-tag">Python</span>
+            <span class="lang-tag">Plotly</span>
+          </div>
+          <a href="https://github.com/kaiquermsouza/dashboard_atendimentos" target="_blank" class="project-link">Ver →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-thumb coral">⚽</div>
+      <div class="project-body">
+        <div class="project-type">Python · Análise Esportiva</div>
+        <h3>Análise do Brasileirão</h3>
+        <p>Projeto de análise de dados do Campeonato Brasileiro com estatísticas de times, jogadores, tendências e insights visuais sobre o desempenho na temporada.</p>
+        <div class="project-footer">
+          <div class="project-langs">
+            <span class="lang-tag">Python</span>
+            <span class="lang-tag">Pandas</span>
+          </div>
+          <a href="https://github.com/kaiquermsouza/analise_brasileirao" target="_blank" class="project-link">Ver →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-thumb blue">🧃</div>
+      <div class="project-body">
+        <div class="project-type">Python · App</div>
+        <h3>App Sucos Supermercado</h3>
+        <p>Aplicação para gestão de produtos de uma rede de supermercados, com controle de estoque, vendas e relatórios automatizados.</p>
+        <div class="project-footer">
+          <div class="project-langs">
+            <span class="lang-tag">Python</span>
+            <span class="lang-tag">SQLite</span>
+          </div>
+          <a href="https://github.com/kaiquermsouza/app_sucos_supermercado" target="_blank" class="project-link">Ver →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-thumb purple">🌐</div>
+      <div class="project-body">
+        <div class="project-type">Portfólio</div>
+        <h3>Portfólio KRMS</h3>
+        <p>Repositório base do portfólio profissional — o início da presença online consolidando todos os trabalhos e projetos desenvolvidos ao longo da carreira.</p>
+        <div class="project-footer">
+          <div class="project-langs">
+            <span class="lang-tag">HTML</span>
+            <span class="lang-tag">GitHub Pages</span>
+          </div>
+          <a href="https://github.com/kaiquermsouza/portifoliokrms" target="_blank" class="project-link">Ver →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- POWER BI -->
+<section id="powerbi">
+  <div class="section-label">Business Intelligence</div>
+  <div class="section-title">Dashboards Power BI</div>
+  <p style="color: var(--text2); margin-bottom: 2.5rem; max-width: 580px; font-size: 0.95rem;">
+    Abaixo estão os tipos de dashboards que desenvolvo. Para ver versões interativas, solicite acesso pelo contato — posso publicar no Power BI Service e compartilhar o link de embed.
+  </p>
+  <div class="powerbi-grid">
+    <div class="powerbi-card fade-in">
+      <div class="pbi-icon">💰</div>
+      <div class="pbi-info">
+        <h3>Dashboard FP&amp;A</h3>
+        <p>Painel financeiro completo com Budget vs Realizado, projeções de fluxo de caixa e análise de variâncias por centro de custo.</p>
+      </div>
+    </div>
+    <div class="powerbi-card fade-in">
+      <div class="pbi-icon">📦</div>
+      <div class="pbi-info">
+        <h3>Controle de Estoque FIFO</h3>
+        <p>Dashboard com controle FIFO de estoque, aging de produtos, giro e alertas de ruptura em tempo real.</p>
+      </div>
+    </div>
+    <div class="powerbi-card fade-in">
+      <div class="pbi-icon">📋</div>
+      <div class="pbi-info">
+        <h3>Dashboard de Atendimentos</h3>
+        <p>Monitoramento de KPIs de atendimento, tempo de resposta, satisfação e volume por canal e período.</p>
+      </div>
+    </div>
+    <div class="powerbi-card fade-in">
+      <div class="pbi-icon">⚽</div>
+      <div class="pbi-info">
+        <h3>Análise Esportiva</h3>
+        <p>Visão analítica do Brasileirão com ranking, métricas por time, média de gols e desempenho ao longo da temporada.</p>
+      </div>
+    </div>
+    <div class="powerbi-card fade-in">
+      <div class="pbi-icon">📈</div>
+      <div class="pbi-info">
+        <h3>Vendas & Comercial</h3>
+        <p>Acompanhamento de metas, funil de vendas, ranking de vendedores e análise de mix de produtos com drill-through.</p>
+      </div>
+    </div>
+    <div class="powerbi-card fade-in">
+      <div class="pbi-icon">🏭</div>
+      <div class="pbi-info">
+        <h3>Operações & Supply</h3>
+        <p>Indicadores operacionais, OEE, acompanhamento de produção e rastreabilidade de processos na cadeia de suprimentos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" style="background: var(--bg2);">
+  <div class="contact-wrapper fade-in">
+    <div class="section-label">Vamos conversar</div>
+    <div class="section-title">Entre em contato</div>
+    <p class="contact-desc">
+      Aberto a oportunidades como Analista de Dados, BI Developer ou funções em FP&amp;A. Também aceito projetos freelance e consultorias.
+    </p>
+    <div class="contact-links">
+      <a href="https://github.com/kaiquermsouza" target="_blank" class="contact-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/kaiquermsouza" target="_blank" class="contact-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:kaiquerobertosouza@gmail.com" class="contact-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        E-mail
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Kaique Souza · Data Analyst</p>
+  <p>Feito com 💜 · <a href="https://github.com/kaiquermsouza" target="_blank">github.com/kaiquermsouza</a></p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
