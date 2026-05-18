@@ -52,16 +52,12 @@
     border-bottom: 1px solid var(--border2);
   }
 
-  .nav-logo {
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: var(--text);
-    letter-spacing: 0.08em;
-    text-shadow: 0 0 18px rgba(61,136,240,0.5);
+  .nav-logo img {
+    height: 30px;
+    mix-blend-mode: screen;
+    filter: brightness(1.4) contrast(1.1);
+    display: block;
   }
-
-  .nav-logo span { color: var(--accent); text-shadow: 0 0 22px rgba(61,136,240,0.7); }
 
   nav ul {
     list-style: none;
@@ -632,7 +628,7 @@
 <body>
 
 <nav>
-  <div class="nav-logo">KRM<span>S</span></div>
+  <div class="nav-logo"><img src="krms-logo.png" alt="KRMS"></div>
   <ul>
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#skills">Skills</a></li>
