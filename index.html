@@ -497,18 +497,35 @@
     animation: pulse 2s infinite;
   }
 
-  .pbi-demo-title {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
+  .pbi-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
   }
 
-  .pbi-demo-desc {
+  .pbi-tab {
+    background: var(--card);
+    border: 1px solid var(--border2);
     color: var(--text2);
+    font-family: var(--font-body);
     font-size: 0.875rem;
-    margin-bottom: 1.25rem;
-    max-width: 560px;
+    font-weight: 500;
+    padding: 0.55rem 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .pbi-tab:hover {
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  .pbi-tab.active {
+    background: rgba(61,136,240,0.14);
+    border-color: rgba(61,136,240,0.4);
+    color: var(--accent2);
   }
 
   .pbi-embed-card {
@@ -947,12 +964,18 @@
   <div class="section-title">Dashboards Power BI</div>
 
   <div class="pbi-demo-wrapper fade-in">
-    <div class="pbi-demo-label">Demo ao vivo</div>
-    <div class="pbi-demo-title">Análise de Pareto</div>
-    <p class="pbi-demo-desc">Dashboard interativo publicado no Microsoft Fabric — explore os dados diretamente abaixo.</p>
+    <div class="pbi-demo-label">Demos ao vivo</div>
+    <div class="pbi-tabs">
+      <button class="pbi-tab active" onclick="switchDemo(this, 'pareto')">📊 Análise de Pareto</button>
+      <button class="pbi-tab" onclick="switchDemo(this, 'ambev')">🏭 DRE Ambev</button>
+    </div>
+
     <div class="pbi-embed-card">
-      <div class="pbi-embed-ratio">
+      <div class="pbi-embed-ratio" id="demo-pareto">
         <iframe title="Analise Pareto" src="https://app.fabric.microsoft.com/view?r=eyJrIjoiNDJjMzk0YjktZjEwZS00NTNhLWE0Y2MtZGNlMmIwOTU3ZjE0IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" allowFullScreen="true"></iframe>
+      </div>
+      <div class="pbi-embed-ratio" id="demo-ambev" style="display:none">
+        <iframe title="01_Dashboard_Ambev" src="https://app.fabric.microsoft.com/view?r=eyJrIjoiMjk4MTI0ZGYtYzAyYy00YTQ1LWE4YTItMjY2ZTZmNGFkZmI1IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" allowFullScreen="true"></iframe>
       </div>
     </div>
   </div>
@@ -1046,6 +1069,13 @@
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function switchDemo(btn, id) {
+    document.querySelectorAll('.pbi-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.pbi-embed-ratio').forEach(d => d.style.display = 'none');
+    btn.classList.add('active');
+    document.getElementById('demo-' + id).style.display = 'block';
+  }
 </script>
 
 </body>
