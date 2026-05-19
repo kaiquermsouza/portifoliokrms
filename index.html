@@ -469,6 +469,71 @@
 
   .project-link:hover { gap: 0.6rem; }
 
+  /* POWERBI DEMO */
+  .pbi-demo-wrapper {
+    margin-bottom: 3.5rem;
+  }
+
+  .pbi-demo-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(61,136,240,0.1);
+    border: 1px solid rgba(61,136,240,0.25);
+    color: var(--accent2);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.85rem;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .pbi-demo-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s infinite;
+  }
+
+  .pbi-demo-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .pbi-demo-desc {
+    color: var(--text2);
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+    max-width: 560px;
+  }
+
+  .pbi-embed-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(61,136,240,0.08);
+    position: relative;
+  }
+
+  .pbi-embed-ratio {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+  }
+
+  .pbi-embed-ratio iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+    display: block;
+  }
+
   /* POWERBI SECTION */
   .powerbi-grid {
     display: grid;
@@ -880,8 +945,20 @@
 <section id="powerbi">
   <div class="section-label">Business Intelligence</div>
   <div class="section-title">Dashboards Power BI</div>
-  <p style="color: var(--text2); margin-bottom: 2.5rem; max-width: 580px; font-size: 0.95rem;">
-    Abaixo estão os tipos de dashboards que desenvolvo. Para ver versões interativas, solicite acesso pelo contato — posso publicar no Power BI Service e compartilhar o link de embed.
+
+  <div class="pbi-demo-wrapper fade-in">
+    <div class="pbi-demo-label">Demo ao vivo</div>
+    <div class="pbi-demo-title">Análise de Pareto</div>
+    <p class="pbi-demo-desc">Dashboard interativo publicado no Microsoft Fabric — explore os dados diretamente abaixo.</p>
+    <div class="pbi-embed-card">
+      <div class="pbi-embed-ratio">
+        <iframe title="Analise Pareto" src="https://app.fabric.microsoft.com/view?r=eyJrIjoiNDJjMzk0YjktZjEwZS00NTNhLWE0Y2MtZGNlMmIwOTU3ZjE0IiwidCI6ImE4Y2Y0YWYwLTc5NzctNGQ4Zi1iNjQzLTJjNWJhYTNlZjQxZCJ9" allowFullScreen="true"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <p style="color: var(--text2); margin-bottom: 2rem; max-width: 580px; font-size: 0.875rem;">
+    Outros tipos de dashboards que desenvolvo:
   </p>
   <div class="powerbi-grid">
     <div class="powerbi-card fade-in">
